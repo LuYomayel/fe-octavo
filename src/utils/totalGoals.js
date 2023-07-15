@@ -1,0 +1,26 @@
+export function calculateGoals(scorers) {
+    const players = scorers.map((scorer) => {
+        const matches = Object.values(scorer.estadisticasXFecha).map((stat) => {
+            return stat.goles;
+        })
+        const goals = matches.reduce((a, b) => a + b, 0);
+        
+        return {
+            _id: scorer._id,
+            name: `${scorer.nombre}`,
+            goals: goals,
+            team: scorer.equipo.nombre,
+            totalMatches: matches.length,
+            average: (goals / matches.length).toFixed(2)
+        }
+    });
+
+    players.sort((a, b) => {
+        if (a.goals > b.goals) return -1;
+        if (a.goals < b.goals) return 1;
+        return 0;
+    })
+
+    return players;
+    console.log(players);
+}
