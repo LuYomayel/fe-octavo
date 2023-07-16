@@ -3,6 +3,7 @@ import { TableScorers } from './components/TableScorers'
 import { TableHeader } from './components/TableHeader'
 import { calculateGoals } from './utils/totalGoals'
 import { Filter } from './components/Filter'
+import { Spinner } from './components/Spinner'
 import './App.css'
 import { getEndpointScorers } from './utils/getEndpointScorers'
 
@@ -10,14 +11,15 @@ function App() {
   const [scorers, setScorers] = useState([])
   const [filterMain, setFilter] = useState('categoria')
   const [teams, setTeams] = useState([{}])
-    
+  const [loading, setLoading] = useState(true)
+
   const handleFilter = async (filter) => {
     console.log(filter);
     setFilter(filter);
   }
 
   const handleFilterHeader = async (filter) => {
-    console.log(filter, filterMain);
+    setLoading(true);
     const endpoint = getEndpointScorers(filter, filterMain);
     if (endpoint === '') {
       return;
@@ -26,6 +28,7 @@ function App() {
     const data = await response.json();
     const goalsPerPlayer = calculateGoals(data.goleadores);
     setScorers(goalsPerPlayer);
+    setLoading(false);
   }
 
   // Llamada inicial a la API
@@ -35,11 +38,11 @@ function App() {
       const endpoint = 'https://api-goleadores.handball-metropolitano.com/equipo';
       const response = await fetch(endpoint);
       const data = await response.json();
-      console.log('equipos' ,data)
+      console.log('equipos' ,data);
       setTeams(data);
     };
 
-  fetchTeams();
+    fetchTeams();
 
     handleFilterHeader({
       division: 'B',
@@ -50,16 +53,21 @@ function App() {
 
   }, []);
 
-  return (
-    <div className="App">
-      <h1>Goleadores</h1>
-      
-      <Filter onFilter={handleFilter}/>
-      <TableHeader onFilterHeader={handleFilterHeader} filter={filterMain} teams={teams}/>
-      <TableScorers scorers={scorers}/>
+  
+    return (
+      <>
+        {loading && <Spinner/>}
+        <div className="App">
+          <h1>Goleadores</h1>
+          
+          <Filter onFilter={handleFilter}/>
+          <TableHeader onFilterHeader={handleFilterHeader} filter={filterMain} teams={teams}/>
+          <TableScorers scorers={scorers}/>
+    
+        </div>
 
-    </div>
-  )
+      </>
+    )
 }
 
 export default App

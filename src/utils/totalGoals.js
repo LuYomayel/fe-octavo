@@ -1,6 +1,6 @@
 export function calculateGoals(scorers) {
     const players = scorers.map((scorer) => {
-        const matches = Object.values(scorer.estadisticasXFecha).map((stat) => {
+        const matches = Object.values(scorer.estadisticasXFecha).map((stat, index) => {
             return stat.goles;
         })
         const goals = matches.reduce((a, b) => a + b, 0);
@@ -21,6 +21,10 @@ export function calculateGoals(scorers) {
         return 0;
     })
 
+    players.map((player, index) => {
+        player.position = index + 1;
+        return player;
+    })
+
     return players;
-    console.log(players);
 }

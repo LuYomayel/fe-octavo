@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { categories, gender, mayDivisions, youthDivisions } from "../utils/filters.js";
 import { Dropdown } from './Dropdown.jsx';
+import { Input } from './Input.jsx';
 export function TableHeader({ onFilterHeader, filter, teams }) {
   const [selectedCategory, setSelectedCategory] = useState('null');
   const [selectedDivision, setSelectedDivision] = useState('null');
   const [selectedGender, setSelectedGender] = useState('null');
   const [selectedTeam, setSelectedTeam] = useState('null');
-  const [selectedPlayer, setSelectedPlayer] = useState('null');
+  const [selectedPlayer, setSelectedPlayer] = useState('');
   const [divisionOptions, setDivisionOptions] = useState(mayDivisions);
 
   const teamsOptions = teams.map((team) => ({
@@ -41,7 +42,8 @@ export function TableHeader({ onFilterHeader, filter, teams }) {
           
           ) : filter === "nombre" ?
           (
-            <input type="text" placeholder="Ingrese un jugador" value={selectedPlayer} onChange={(event) => setSelectedPlayer(event.target.value)}/>
+            <Input onChange={setSelectedPlayer} value={selectedPlayer}/>
+            // <input type="text" placeholder="Ingrese un jugador" value={selectedPlayer} onChange={(event) => setSelectedPlayer(event.target.value)}/>
 
           ) : 
           (

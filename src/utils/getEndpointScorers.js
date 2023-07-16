@@ -16,7 +16,7 @@ export function getEndpointScorers(filter, filterMain) {
           ) return ''
         return `https://api-goleadores.handball-metropolitano.com/jugador/equipo/${filter.team}/${filter.division}/${filter.category}/${filter.gender}`;
     }else {
-        if(filter.nombre === '' || filter.nombre === null) return ''
-        return `https://api-goleadores.handball-metropolitano.com/jugador/nombre/${filter.nombre}`;
+        if(filter.player === '' || filter.player === null) return ''
+        return `https://api-goleadores.handball-metropolitano.com/jugador/nombre/${filter.player}`;
     }
 }
