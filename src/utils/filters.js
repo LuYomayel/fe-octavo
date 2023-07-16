@@ -1,33 +1,33 @@
 export const categories = [
-    { value: null, name: "Elegir categoria" },
-    { value: "Mayores", name: "Mayores" },
-    { value: "Junior", name: "Juniors" },
-    { value: "Juveniles", name: "Juveniles" },
-    { value: "Cadetes", name: "Cadetes" },
-    { value: "Menores", name: "Menores" },
-    { value: "Infantiles", name: "Infantiles" },
+    { value: null, label: "Elegir categoria" },
+    { value: "Mayores", label: "Mayores" },
+    { value: "Junior", label: "Juniors" },
+    { value: "Juveniles", label: "Juveniles" },
+    { value: "Cadetes", label: "Cadetes" },
+    { value: "Menores", label: "Menores" },
+    { value: "Infantiles", label: "Infantiles" },
   ];
   
   export const youthDivisions = [
-    { value: null, name: "Elegir division" },
-    { value: "A", name: "A" },
-    { value: "B", name: "B" },
-    { value: "C", name: "C" },
-    { value: "D", name: "D" },
-    { value: "E", name: "E" },
+    { value: null, label: "Elegir division" },
+    { value: "A", label: "A" },
+    { value: "B", label: "B" },
+    { value: "C", label: "C" },
+    { value: "D", label: "D" },
+    { value: "E", label: "E" },
   ];
   
   export const mayDivisions = [
-    { value: null, name: "Elegir division" },
-    { value: "Liga de Honor Oro", name: "LH Oro" },
-    { value: "Liga de Honor Plata", name: "LH Plata" },
-    { value: "1%C2%B0/", name: "Primera" },
-    { value: "2%C2%B0/", name: "Segunda" },
-    { value: "3%C2%B0/", name: "Tercera" },
+    { value: null, label: "Elegir division" },
+    { value: "Liga de Honor Oro", label: "LH Oro" },
+    { value: "Liga de Honor Plata", label: "LH Plata" },
+    { value: "1%C2%B0/", label: "Primera" },
+    { value: "2%C2%B0/", label: "Segunda" },
+    { value: "3%C2%B0/", label: "Tercera" },
   ];
   
   export const gender = [
-    { value: null, name: "Elegir genero" },
-    { value: "Masculino", name: "Masculino" },
-    { value: "Femenino", name: "Femenino" },
+    { value: null, label: "Elegir genero" },
+    { value: "Masculino", label: "Masculino" },
+    { value: "Femenino", label: "Femenino" },
   ];

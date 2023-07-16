@@ -1,30 +1,22 @@
 import React, { useState } from 'react';
 import { categories, gender, mayDivisions, youthDivisions } from "../utils/filters.js";
-
+import { Dropdown } from './Dropdown.jsx';
 export function TableHeader({ onFilterHeader, filter, teams }) {
   const [selectedCategory, setSelectedCategory] = useState('null');
   const [selectedDivision, setSelectedDivision] = useState('null');
   const [selectedGender, setSelectedGender] = useState('null');
   const [selectedTeam, setSelectedTeam] = useState('null');
   const [selectedPlayer, setSelectedPlayer] = useState('null');
+  const [divisionOptions, setDivisionOptions] = useState(mayDivisions);
 
-  const handleTeamChange = (event) => {
-    setSelectedTeam(event.target.value);
-  };
+  const teamsOptions = teams.map((team) => ({
+    value: team._id,
+    label: team.nombre,
+  }));
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+  
 
-  const handleDivisionChange = (event) => {
-    setSelectedDivision(event.target.value);
-  };
-
-  const handleGenderChange = (event) => {
-    setSelectedGender(event.target.value);
-  };
-
-  const handleFilter = () => {
+  const handleFilter = (event) => {
     console.log(selectedCategory, selectedDivision, selectedGender, selectedTeam, selectedPlayer);  
     onFilterHeader({
       category: selectedCategory,
@@ -37,74 +29,30 @@ export function TableHeader({ onFilterHeader, filter, teams }) {
 
   return (
     <div className="table-header">
-      <div>
         {
           filter === "equipo" ? 
           (
             <>
-            <select name="team" id="team" value={selectedTeam} onChange={handleTeamChange}>
-              {teams.map((team) => (
-                <option value={team._id}>{team.nombre}</option>
-              ))}
-            </select>
-              <select name="category" id="category" value={selectedCategory} onChange={handleCategoryChange}>
-                  {categories.map((category) => (
-                    <option value={category.value}>{category.name}</option>
-                  ))}
-                </select><select name="divisions" id="divisions" value={selectedDivision} onChange={handleDivisionChange}>
-                  {selectedCategory === "Mayores" ? (
-                    mayDivisions.map((division) => (
-                      <option value={division.value}>{division.name}</option>
-                    ))
-                  ) : (
-                    youthDivisions.map((division) => (
-                      <option value={division.value}>{division.name}</option>
-                    ))
-                  )}
-                </select><select name="gender" id="gender" value={selectedGender} onChange={handleGenderChange}>
-                  {gender.map((gender) => (
-                    <option value={gender.value}>{gender.name}</option>
-                  ))}
-                </select></>
+              <Dropdown onChange={setSelectedTeam} options={teamsOptions} value={selectedTeam}/>
+              <Dropdown onChange={setSelectedCategory} options={categories} value={selectedCategory}/>
+              <Dropdown onChange={setSelectedDivision} options={divisionOptions} value={selectedDivision}/>
+              <Dropdown onChange={setSelectedGender} options={gender} value={selectedGender}/>
+            </>
           
-          ) : filter === "jugador" ?
+          ) : filter === "nombre" ?
           (
             <input type="text" placeholder="Ingrese un jugador" value={selectedPlayer} onChange={(event) => setSelectedPlayer(event.target.value)}/>
 
           ) : 
           (
           <>
-            <select name="category" id="category" value={selectedCategory} onChange={handleCategoryChange}>
-              {categories.map((category) => (
-                  <option value={category.value}>{category.name}</option>
-              ))}
-            </select>
-            <select name="divisions" id="divisions" value={selectedDivision} onChange={handleDivisionChange}>
-              {selectedCategory === "Mayores" ? (
-                mayDivisions.map((division) => (
-                  <option value={division.value}>{division.name}</option>
-                ))
-              ) : (
-                youthDivisions.map((division) => (
-                  <option value={division.value}>{division.name}</option>
-                ))
-                )}
-            </select><select name="gender" id="gender" value={selectedGender} onChange={handleGenderChange}>
-              {gender.map((gender) => (
-                <option value={gender.value}>{gender.name}</option>
-              ))}
-            </select>
+            <Dropdown onChange={setSelectedCategory} options={categories} value={selectedCategory}/>
+            <Dropdown onChange={setSelectedDivision} options={divisionOptions} value={selectedDivision}/>
+            <Dropdown onChange={setSelectedGender} options={gender} value={selectedGender} />
           </>
           )
-
-          
         }
-
-
-        
-
-        <input type="button" value="Filtrar" onClick={handleFilter}/>
-      </div>
+        <input type="button" value="Filtrar" className='btn' onClick={handleFilter}/>
     </div>
   );
 }

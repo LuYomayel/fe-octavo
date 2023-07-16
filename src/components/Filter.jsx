@@ -1,21 +1,25 @@
 import { useState } from 'react';
+import { Dropdown } from './Dropdown';
 function Filter( {onFilter} ) {
   const [selectedFilter, setSelectedFilter] = useState('categoria');
-  const handleFilterChange = (event) => {
-    setSelectedFilter(event.target.value);
-    onFilter(event.target.value);
-  };
 
+  const handleChangeFilter = (event) => {
+    setSelectedFilter(event)
+    onFilter(event);
+  }
 
   return (
-    <div className="Filter">
+    <div className="filter">
         <h2>Filtrar por: </h2>
-        <select name="filter" id="filter" value={selectedFilter} onChange={handleFilterChange}>
-            <option value="categoria">Categoria</option>
-            <option value="equipo">Equipo</option>
-            <option value="nombre">Jugador</option>
-
-        </select>
+        <Dropdown 
+          onChange={handleChangeFilter} 
+          options={[
+            {value: 'categoria', label: 'Categoria'}, 
+            {value: 'equipo', label: 'Equipo'}, 
+            {value: 'nombre', label: 'Jugador'}]
+          }
+          value={selectedFilter}
+        />
     </div>
   )
 }
