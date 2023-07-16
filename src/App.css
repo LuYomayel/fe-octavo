@@ -34,6 +34,7 @@ body {
 }
 .btn {
   font-weight: bold;
+  font-size: 1rem;
   padding: 15px;
   border-radius: 5px;
   border: 1px solid #000000;
@@ -81,13 +82,10 @@ option {
   color: #fff;
 }
 
-.dropdown::-ms-expand {
-  display: none;
+.dropdown-wrapper:hover {
+  border: 1px solid #000;
 }
-.dropdown:hover {
-  border-color: #888;
-}
-.dropdown:focus {
+.dropdown-wrapper:focus {
   border-color: #aaa;
   box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
   box-shadow: 0 0 0 3px -moz-mac-focusring;
@@ -98,7 +96,3 @@ option {
   font-weight:normal;
 }
 
-.dropdown-content {
-  padding: 100px;
-  /* color: #333; */
-}
