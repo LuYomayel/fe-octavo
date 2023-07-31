@@ -2,6 +2,9 @@
     width: 100%;
     overflow-y: auto;
     /* margin: 20px; */
+    color: #000000;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+
 }
 
 table {
@@ -9,7 +12,7 @@ table {
     border-collapse: collapse;
     margin: 10px auto;
     font-weight: bold;
-    color: #fff;
+    
     background-color: none;
     /* box-shadow: .5rem .5rem .5rem 0 rgba(0, 0, 0, 0.35); */
   }
@@ -18,12 +21,11 @@ table {
   table td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #1d1d1d;
   }
   
   table th {
     /* background-color: #ddd; */
-    color: #fff;
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;
@@ -53,14 +55,14 @@ table {
     table tr {
       margin-bottom: 10px;
       display: block;
-      border-bottom: 2px solid #ddd;
+      border-bottom: 2px solid #1d1d1d;
     }
   
     table td {
       display: block;
       text-align: right;
       font-size: 13px;
-      border-bottom: 1px dotted #ccc;
+      border-bottom: 1px dotted #1d1d1d;
     }
   
     table td::before {
@@ -102,3 +104,19 @@ table {
     border-radius: 5px;
     margin: 0 0.5rem;
   }
+
+.container-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.empty-filter{
+  color: red;
+  text-align: left;
+}

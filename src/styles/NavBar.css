@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px 20px;
+    border-bottom: 1px solid #ccc; /* Línea debajo de la barra de navegación */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* background-color: transparent; */
+    background-color: #000000; /* Color de fondo de la barra de navegación */
+    transition: background-color 0.3s;
+    /* background-color: black; */
+}
+
+.social-icon {
+    margin-right: 10px;
+    color: #fff; /* Color del ícono, puedes cambiarlo */
+    font-size: 20px; /* Tamaño del ícono, puedes ajustarlo */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.navbar-right a {
+    color: #fff; /* Color del texto, puedes cambiarlo */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-right a:hover {
+    text-decoration: underline;
+}

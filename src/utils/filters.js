@@ -1,5 +1,5 @@
 export const categories = [
-    { value: null, label: "Elegir categoria" },
+    { value: 'null', label: "Elegir categoria" },
     { value: "Mayores", label: "Mayores" },
     { value: "Junior", label: "Juniors" },
     { value: "Juveniles", label: "Juveniles" },
@@ -9,7 +9,7 @@ export const categories = [
   ];
   
   export const youthDivisions = [
-    { value: null, label: "Elegir division" },
+    { value: 'null', label: "Elegir division" },
     { value: "A", label: "A" },
     { value: "B", label: "B" },
     { value: "C", label: "C" },
@@ -18,7 +18,7 @@ export const categories = [
   ];
   
   export const mayDivisions = [
-    { value: null, label: "Elegir division" },
+    { value: 'null', label: "Elegir division" },
     { value: "Liga de Honor Oro", label: "LH Oro" },
     { value: "Liga de Honor Plata", label: "LH Plata" },
     { value: "1%C2%B0/", label: "Primera" },
@@ -27,7 +27,7 @@ export const categories = [
   ];
   
   export const gender = [
-    { value: null, label: "Elegir genero" },
+    { value: 'null', label: "Elegir genero" },
     { value: "Masculino", label: "Masculino" },
     { value: "Femenino", label: "Femenino" },
   ];

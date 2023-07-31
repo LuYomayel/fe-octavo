@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../styles/Table.css';
 function TableScorers({ scorers }) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +12,6 @@ function TableScorers({ scorers }) {
     return (
         <>
             <div className='table-container'>
-
                 <table>
                 <thead>
                     <tr>
