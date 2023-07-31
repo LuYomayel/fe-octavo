@@ -6,31 +6,27 @@ import { Filter } from '../components/Filter'
 import { Spinner } from '../components/Spinner'
 import { EmptySearch } from '../components/EmptySearch'
 import '../App.css'
-import { getEndpointScorers } from '../utils/getEndpointScorers'
+import parseFairPlay from '../utils/parseFairPlay'
+import { TableFairPlay } from '../components/TableFairPlay'
 
 
 export function FairPlay() {
-  const [scorers, setScorers] = useState([])
-  const [filterMain, setFilter] = useState('categoria')
   const [teams, setTeams] = useState([{}])
   const [loading, setLoading] = useState(true)
 
-  const handleFilter = async (filter) => {
-    console.log(filter);
-    setFilter(filter);
-  }
+  const filterMain = 'categoria'
 
   const handleFilterHeader = async (filter) => {
     setLoading(true);
-    const endpoint = getEndpointScorers(filter, filterMain);
-    if (endpoint === '') {
-      return;
-    }
+    console.log('filter', filter)
+    
+    const endpoint = `https://api-goleadores.handball-metropolitano.com/jugador/fairplay/${filter.division}/${filter.category}/${filter.gender}`;
+    
     const response = await fetch(endpoint);
     const data = await response.json();
-    const goalsPerPlayer = calculateGoals(data.goleadores);
-    setScorers(goalsPerPlayer);
-    console.log('goleadores', goalsPerPlayer.length)
+    console.log('data', data)
+    const teamsParsed = parseFairPlay(data);
+    setTeams(teamsParsed);
     setLoading(false);
   }
 
@@ -38,15 +34,18 @@ export function FairPlay() {
   useEffect(() => {
 
     const fetchTeams = async () => {
-      const endpoint = 'https://api-goleadores.handball-metropolitano.com/equipo';
+      const endpoint = 'https://api-goleadores.handball-metropolitano.com/jugador/fairplay/A/Junior/Masculino';
       const response = await fetch(endpoint);
       const data = await response.json();
-      console.log('equipos' ,data);
-      setTeams(data);
+      console.log('equipos fairplay' ,data);
+      const teams = parseFairPlay(data);
+
+      setTeams(teams);
     };
 
     fetchTeams();
-
+    setLoading(false)
+    return;
     handleFilterHeader({
       division: 'B',
       category: 'Junior',
@@ -63,9 +62,9 @@ export function FairPlay() {
         <div className="App">
           <h1>FairPlay</h1>
           
-          <Filter onFilter={handleFilter}/>
+          {/* <Filter onFilter={handleFilter}/> */}
           <TableHeader onFilterHeader={handleFilterHeader} filter={filterMain} teams={teams}/>
-          {(scorers.length === 0 && !loading) ?  (<EmptySearch/>) : (<TableScorers scorers={scorers}/>)}
+          {(teams.length === 0 && !loading) ?  (<EmptySearch/>) : (<TableFairPlay teams={teams}/>)}
           {/* {(scorers.length === 0 && !loading) ?  (<EmptySearch/>) : (<TableScorers scorers={scorers}/>)} */}
     
         </div>
