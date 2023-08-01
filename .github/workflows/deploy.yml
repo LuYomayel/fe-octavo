@@ -32,7 +32,7 @@ jobs:
 
     - name: Deploy to server
       run: |
-        scp -o StrictHostKeyChecking=no -i private_key.pem dist/* ec2-user@44.211.52.12:/var/www/html/fe-octavo/
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ec2-user@44.211.52.12 "sudo systemctl restart httpd && sudo systemctl status httpd"
+        scp -o StrictHostKeyChecking=no -r -i private_key.pem dist/* ec2-user@44.211.52.12:/var/www/html/fe-octavo/
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ec2-user@44.211.52.12 "sudo chown -R ec2-user:ec2-user /var/www/html/fe-octavo/ && sudo systemctl restart httpd && sudo systemctl status httpd"
       env:
         PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
