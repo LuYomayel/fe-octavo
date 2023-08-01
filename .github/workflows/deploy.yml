@@ -27,7 +27,7 @@ jobs:
 
     - name: Prepare SSH key
       run: |
-        echo "$PRIVATE_KEY" > private_key.pem
+        echo "${{ secrets.SERVER_SSH_KEY }}" > private_key.pem
         chmod 600 private_key.pem
 
     - name: Deploy to server
