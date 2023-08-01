@@ -27,7 +27,7 @@ jobs:
 
     - name: Deploy to server
       run: |
-        scp -r dist/* ec2-user@44.211.52.12/var/www/html/fe-octavo/
+        scp -r dist/* ec2-user@44.211.52.12:/var/www/html/fe-octavo/
         ssh ec2-user@44.211.52.12 "sudo systemctl restart httpd && sudo systemctl status httpd"
       env:
         PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
