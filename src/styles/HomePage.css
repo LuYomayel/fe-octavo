@@ -1,0 +1,23 @@
+.home-page {
+    padding-top: 3rem;
+    display: flex;
+    height: 100vh; /* Asume que quieres que ocupe toda la altura de la ventana */
+}
+
+.main {
+    flex: 0.7; /* 70% del ancho */
+    border-right: 1px solid #ccc; /* Opcional: para separar visualmente el contenido principal de las noticias laterales */
+}
+
+.side {
+    flex: 0.3; /* 30% del ancho */
+    overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido excede la altura */
+    height: 100%; /* Ocupa toda la altura del contenedor padre */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Asegúrate de que cada noticia en el lado tenga la misma altura */
+.side .new {
+    flex: 1;
+}
