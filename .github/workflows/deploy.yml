@@ -25,11 +25,14 @@ jobs:
     - name: Build project
       run: npm run build
 
+    - name: Prepare SSH key
+      run: |
+        echo "$PRIVATE_KEY" > private_key.pem
+        chmod 600 private_key.pem
+
     - name: Deploy to server
       run: |
-        scp -r dist/* ec2-user@44.211.52.12:/var/www/html/fe-octavo/
-        ssh ec2-user@44.211.52.12 "sudo systemctl restart httpd && sudo systemctl status httpd"
+        scp -o StrictHostKeyChecking=no -i private_key.pem dist/* ec2-user@44.211.52.12:/var/www/html/fe-octavo/
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ec2-user@44.211.52.12 "sudo systemctl restart httpd && sudo systemctl status httpd"
       env:
         PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-
-
