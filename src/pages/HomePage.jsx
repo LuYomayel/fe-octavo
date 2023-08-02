@@ -1,21 +1,27 @@
 import { New } from "../components/home/New";
 import '../styles/HomePage.css';
+import bgImage from '../assets/bg-new.png';
+import smImage from '../assets/sm-new.png';
 export function HomePage() {
+    console.log(bgImage)
+    const image = '../../../assets/bg-new.png'
+
     const news = [
         {
             title: 'SEDALO CAMPEON DESPUES DE 11 AÑOS',
             description: 'Crónica de un grito anunciado: SEDALO se consagró campeón tras ganarle en la última fecha a AACF Quilmes en la Casa del Handball por 19-34, abrochando un semestre y campeonato sobresaliente. Las de Lanús Oeste fueron campeonas de punta a punta y se consagraron con un equipo plagado de Juveniles y Juniors, a excepción de una jugadora, tras 11 años. Por el lado de River Plate, venció previamente a VILO 31-20 en lo que fue el partido despedida de Delfina Ojea que marcha a España, sellando también un impecable semestre.',
-            image: '/src/assets/bg-new.png',
+            image: bgImage
         },
         {
             title: 'PARTIDAZO EN EL GLOBO',
             description: 'Por la fecha 12 del apertura 2023, Ferro necesitaba ganar para quedar lider del torneo a falta de dos fechas y Argentinos Juniors LO BAJO.',
-            image: '/src/assets/sm-new.png'
+            image: smImage
         },
         {
             title: 'PARTIDAZO EN EL GLOBO',
             description: 'Por la fecha 12 del apertura 2023, Ferro necesitaba ganar para quedar lider del torneo a falta de dos fechas y Argentinos Juniors LO BAJO.',
-            image: '/src/assets/sm-new.png'
+            // image: '/src/assets/bg-new.png'
+            image: smImage
         }
     ]
     return (
