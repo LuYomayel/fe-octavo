@@ -120,3 +120,10 @@ button {
   }
 } */
 
+.comming-soon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  margin-top: 10rem
+}
