@@ -5,7 +5,7 @@ import { calculateGoals } from '../utils/totalGoals'
 import { Filter } from '../components/Filter'
 import { Spinner } from '../components/Spinner'
 import { EmptySearch } from '../components/EmptySearch'
-import '../App.css'
+import '../styles/TopScorer.css'
 import { getEndpointScorers } from '../utils/getEndpointScorers'
 
 
@@ -60,7 +60,7 @@ export function TopScorers() {
     return (
       <>
         {loading && <Spinner/>}
-        <div className="App">
+        <div className="top-scorers">
           <h1>Goleadores</h1>
           
           <Filter onFilter={handleFilter}/>

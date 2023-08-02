@@ -1,4 +1,17 @@
 .bg-new{
     width: 100%;
     text-align: left;
+    padding-bottom: .5rem;
+}
+
+.bg-new h1{
+    padding: 0;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.bg-new p{
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
 }

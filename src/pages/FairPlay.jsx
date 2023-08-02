@@ -5,7 +5,7 @@ import { calculateGoals } from '../utils/totalGoals'
 import { Filter } from '../components/Filter'
 import { Spinner } from '../components/Spinner'
 import { EmptySearch } from '../components/EmptySearch'
-import '../App.css'
+import '../styles/FairPlay.css'
 import parseFairPlay from '../utils/parseFairPlay'
 import { TableFairPlay } from '../components/TableFairPlay'
 
@@ -32,8 +32,9 @@ export function FairPlay() {
 
   // Llamada inicial a la API
   useEffect(() => {
-
     const fetchTeams = async () => {
+      setLoading(true);
+
       const endpoint = 'https://api-goleadores.handball-metropolitano.com/jugador/fairplay/A/Junior/Masculino';
       const response = await fetch(endpoint);
       const data = await response.json();
@@ -41,27 +42,18 @@ export function FairPlay() {
       const teams = parseFairPlay(data);
 
       setTeams(teams);
+      setLoading(false)
     };
 
     fetchTeams();
-    setLoading(false)
-    return;
-    handleFilterHeader({
-      division: 'B',
-      category: 'Junior',
-      gender: 'Masculino',
-    });
-
-
   }, []);
 
   
     return (
       <>
         {loading && <Spinner/>}
-        <div className="App">
+        <div className="fair-play">
           <h1>FairPlay</h1>
-          
           {/* <Filter onFilter={handleFilter}/> */}
           <TableHeader onFilterHeader={handleFilterHeader} filter={filterMain} teams={teams}/>
           {(teams.length === 0 && !loading) ?  (<EmptySearch/>) : (<TableFairPlay teams={teams}/>)}

@@ -1,113 +1,141 @@
+/* Estilos para .table-container */
 .table-container {
-    width: 100%;
-    overflow-y: auto;
-    /* margin: 20px; */
-    color: #000000;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-
+  width: 100%;
+  color: #000000;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  flex: 1; /* Ocupa todo el espacio disponible */
+  overflow-y: auto; 
 }
 
+/* Estilos para la tabla */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px auto;
-    font-weight: bold;
-    
-    background-color: none;
-    /* box-shadow: .5rem .5rem .5rem 0 rgba(0, 0, 0, 0.35); */
-  }
-  
-  table th,
-  table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #1d1d1d;
-  }
-  
-  table th {
-    /* background-color: #ddd; */
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: none;
-  }
-  table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  table tr:hover {
-    background-color: none;
-    cursor: pointer;
-  }
-  
-  @media screen and (max-width: 600px) {
-    table {
+  width: 100%;
+  font-weight: bold;
+  background-color: none;
+  border-collapse: collapse;
+}
+
+/* Estilos para el encabezado de la tabla */
+table thead {
+  position: sticky; /* Usamos sticky en lugar de fixed */
+  top: 0; /* Posicionamos el encabezado en la parte superior */
+}
+/* Estilos para el encabezado y las filas de la tabla */
+table thead, table tbody tr {
+  display: table; /* Esto es necesario para que los encabezados y las filas se muestren correctamente */
+  width: 100%;
+  table-layout: fixed; /* Esto asegura que las columnas no cambien de tamaño */
+}
+
+/* Estilos para el cuerpo de la tabla */
+table tbody {
+  /* display: block; */
+  height: 100%;
+  overflow-y: auto;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #1d1d1d;
+}
+
+table th {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #1d1d1d;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #1d1d1d;
+}
+
+table tr:nth-child(even) {
+  background-color: none;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+table tr:hover {
+  background-color: none;
+  cursor: pointer;
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  table {
       border: 0;
-    }
-  
-    table thead {
+  }
+
+  table thead {
       display: none;
-    }
-  
-    table tr {
+  }
+
+  table tr {
       margin-bottom: 10px;
       display: block;
       border-bottom: 2px solid #1d1d1d;
-    }
-  
-    table td {
+  }
+
+  table td {
       display: block;
       text-align: right;
       font-size: 13px;
       border-bottom: 1px dotted #1d1d1d;
-    }
-  
-    table td::before {
+  }
+
+  table td::before {
       content: attr(data-label);
       float: left;
       text-transform: uppercase;
       font-weight: bold;
-    }
   }
-  
+}
+
+/* Estilos para paginación */
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }
 
 .pagination-button {
-    font-weight: bold;
-    color: #000;
-    border: 1px solid #000;
-    border-radius: 5px;
-    margin: 0 0.5rem;
-    background-color: #fff;
+  font-weight: bold;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+  background-color: #fff;
 }
 
 .pagination-button:hover {
-    background-color: #000;
-    color: #fff;
-    cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
 }
 
-  .current-page {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    border-radius: 5px;
-    margin: 0 0.5rem;
-  }
+.current-page {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+}
 
-.container-flex{
-    display: flex;
-    flex-direction: column;
+/* Otros estilos */
+.container-flex {
+  display: flex;
+  flex-direction: column;
 }
 
 .table-header {
@@ -116,7 +144,7 @@ table {
   align-items: center;
 }
 
-.empty-filter{
+.empty-filter {
   color: red;
   text-align: left;
 }

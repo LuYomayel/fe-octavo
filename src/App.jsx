@@ -3,7 +3,7 @@ import {TopScorers} from "./pages/TopScorers"; // Asegúrate de importar correct
 import {FairPlay} from "./pages/FairPlay"; // Asegúrate de importar correctamente
 import { HomePage } from "./pages/HomePage";
 import { NavBar } from "./components/NavBar.jsx";
-
+import './App.css';
 function App() {
   return (
     <div className="App">
@@ -11,6 +11,9 @@ function App() {
         <NavBar />
         <div className="body">
         <Route path="/">
+          <HomePage />
+        </Route>
+        <Route path="/noticias">
           <HomePage />
         </Route>
         <Route path="/goleadores">

@@ -1,16 +1,23 @@
 .home-page {
-    padding-top: 3rem;
+    /* padding: 3rem 1rem; */
+    /* padding-top: 3rem; */
+    padding: 0;
+    margin: 0;
+    padding: 0 1rem;
+    margin-top: 6rem;
     display: flex;
-    height: 100vh; /* Asume que quieres que ocupe toda la altura de la ventana */
+    height: calc(100vh - 6rem);
+    gap: 2rem; /* Espacio entre los elementos */
 }
 
 .main {
-    flex: 0.7; /* 70% del ancho */
-    border-right: 1px solid #ccc; /* Opcional: para separar visualmente el contenido principal de las noticias laterales */
+    flex: 0.65; /* 70% del ancho */
+    overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido excede la altura */
+    
 }
 
 .side {
-    flex: 0.3; /* 30% del ancho */
+    flex: 0.35; /* 30% del ancho */
     overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido excede la altura */
     height: 100%; /* Ocupa toda la altura del contenedor padre */
     display: flex;
@@ -21,3 +28,21 @@
 .side .new {
     flex: 1;
 }
+
+/* Estilos para pantallas pequeñas (por ejemplo, móviles) */
+@media (max-width: 768px) {
+    .home-page {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main, .side {
+        flex: 1; /* Ocupa todo el ancho disponible */
+        border: none; /* Elimina el borde */
+    }
+
+    .side {
+        overflow-y: visible; /* No es necesario el desplazamiento vertical */
+    }
+}
+

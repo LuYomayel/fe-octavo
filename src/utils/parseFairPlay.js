@@ -3,7 +3,7 @@ export default function parseFairPlay(data) {
         return {
             id: index+1,
             teamName: item.equipo.nombre,
-            yellowCards: item.amariilas,
+            yellowCards: item.amarillas,
             redCards: item.rojas,
             blueCards: item.azules,
             twoMin: item.dosmin,
